@@ -1,0 +1,36 @@
+name: Test Workflow
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        id: checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        id: setup-python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        id: install-dependencies
+        run: |
+          echo "::group::Install Python packages"
+          python -m pip install --upgrade pip
+          pip install -r tool/requirements.txt
+          pip install --upgrade pip ipython ipykernel
+          ipython kernel install --name "python3" --user
+          echo "::endgroup::"
+
+      - name: Run tests
+        id: run-tests
+        run: |
+            make test

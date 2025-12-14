@@ -1,0 +1,79 @@
+name: Deploy Workflow
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        id: checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        id: setup-python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        id: install-dependencies
+        run: |
+          echo "::group::Install Python packages"
+          python -m pip install --upgrade pip
+          pip install -r tool/requirements.txt
+          pip install --upgrade pip ipython ipykernel
+          ipython kernel install --name "python3" --user
+          echo "::endgroup::"
+          echo "::group::Install Playwright browsers"
+          playwright install chromium
+          echo "::endgroup::"
+
+      - name: Build project
+        id: build-project
+        run: |
+          make deploy
+
+      - name: Deploy (en)
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: en
+          FOLDER: product/rc-bootcamp_en
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMMIT_NAME: 'github-actions[bot]'
+          COMMIT_EMAIL: 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Deploy (en_sol)
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: en_sol
+          FOLDER: product/rc-bootcamp_en_sol
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMMIT_NAME: 'github-actions[bot]'
+          COMMIT_EMAIL: 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Deploy (ja)
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: ja
+          FOLDER: product/rc-bootcamp_ja
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMMIT_NAME: 'github-actions[bot]'
+          COMMIT_EMAIL: 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Deploy (ja_sol)
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: ja_sol
+          FOLDER: product/rc-bootcamp_ja_sol
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMMIT_NAME: 'github-actions[bot]'
+          COMMIT_EMAIL: 'github-actions[bot]@users.noreply.github.com'

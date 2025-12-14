@@ -1,0 +1,10 @@
+build
+development
+output
+result
+product
+*.pyc
+/*__pycache__/*
+.venv
+.cache
+.ruff_cache/
