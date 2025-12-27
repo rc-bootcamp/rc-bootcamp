@@ -10,7 +10,7 @@ from utils.tqdm import tqdm
 class InnateESN(ESN):
     def __init__(self, *args, lmbd=1.0, **kwargs):
         """
-        Tunable echo state network [Laje, R., & Buonomano, D. V. (2013). Nature neuroscience, 16(7), 925-933.]
+        Tunable ESN [Laje, R., & Buonomano, D. V. (2013). Nature neuroscience, 16(7), 925-933.]
 
         Args:
             alpha (float, optional): regularization parameter for RLS algorithm. Defaults to 1.0.

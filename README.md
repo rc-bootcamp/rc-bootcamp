@@ -11,12 +11,12 @@ Key features of this platform are listed below.
 1. **Multi-language support**:
 Use language tags in markdown cells to put multiple languages into the same notebook.
 When building, the `Makefile` extracts only the sections tagged for the chosen language.
-Those pieces are then combined into per-language notebooks, so a single source notebook can produce versions for different languages.
+Those pieces are then combined into per-language notebooks, that is, a single source notebook can produce versions for different languages.
 English (`en`) and Japanese (`ja`) are supported now; you can add other languages by adding tags and translations and updating `LANGUAGES` in the `Makefile`.
 
 2. **Automatic fill-in-the-blank exercise generation**:
 Add special markers in code cells and the build will replace those parts with placeholders (`...`) to create exercises.
-You can also generate solution versions automatically, so authors manage exercises and solutions in the same notebook.
+You can also generate solution versions automatically enabling authors to maintain both exercises and solutions in the same notebook.
 This cuts down on work and makes updating materials easier.
 
 3. **Answer checking and display**:
@@ -25,12 +25,12 @@ This goes beyond running example code and helps learners build coding skills and
 We also provide `show_solution`, which prints model answers so learners can check solutions when stuck.
 
 4. **High extensibility**:
-Each chapter is a standalone notebook, so adding or editing chapters is easy.
+Each chapter is a standalone notebook, making it easy to add, remove, or rearrange chapters.
 RC moves fast, and new topics pop up often, so this layout helps keep the content current.
-After chapter 9 the material shifts toward more advanced research topics, and we may add more chapters later.
+After chapter 9, the material shifts toward more advanced research topics, and we may add more chapters later.
 
 ## Installation
-Clone the repo and change into it:
+Clone the repo and enter the project directory:
 ```bash
 git clone https://github.com/rc-bootcamp/rc-bootcamp.git
 cd rc-bootcamp
@@ -50,7 +50,7 @@ After syncing, install [Playwright](https://playwright.dev/) browsers with:
 playwright install
 ```
 
-which is required to convert some notebooks to markdown (`.md`) and PDF during the build.
+which is required to convert some notebooks specified in `Makefile` to markdown (`.md`) and PDF during the build.
 Activate the virtualenv and run make to test the build (the first line assumes bash/zsh; on Windows use `.venv\Scripts\activate` instead):
 
 ```bash
@@ -65,7 +65,7 @@ uv run make
 ```
 
 A successful build creates `product/rc-bootcamp_[LANG][MODE_SUFFIX]/` directories for each language and mode.
-By default the build creates four product folders:
+By default, the build creates four product folders:
 - `product/rc-bootcamp_en`: English exercise version.
 - `product/rc-bootcamp_en_sol`: English solution version.
 - `product/rc-bootcamp_ja`: Japanese exercise version.
@@ -123,7 +123,7 @@ $$
 ここで$a$、$b$、$c$は変数です。
 ```
 
-To add another language, append its language tag and content in the same way.
+To add another language, append its tag and content in the same way.
 The new language tag should be appended to `LANGUAGES` in `Makefile`.
 Use language tags following [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) (e.g., `es` for Spanish, `zh` for Chinese).
 
