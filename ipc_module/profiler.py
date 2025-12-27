@@ -502,6 +502,7 @@ class UnivariateProfiler(UnivariateViewer):
             ```python
             profiler.calc(1, 5)  # (1,) with delays 0 to 4.
             profiler.calc(2, 6, zero_offset=False)  # (1, 1), (2,) with delays 1 to 6.
+            profiler.calc(2, 6, zero_offset=2) # (1, 1), (2,) with delays 2 to 7.
             profiler.calc([2, 3], [7, 8])  # (1, 1), (2,) with delays 0 to 6; (1, 1, 1), (2, 1), (3,) with delays 0 to 7.
             profiler.calc(4, 9, method=lambda key: max(key) >= 2)  # (4,), (3, 1), (2, 2), (2, 1, 1) with delays 0 to 8.
             profiler.calc(5, 10, method=-2)  # (4, 1), (3, 2) with delays 0 to 9.
