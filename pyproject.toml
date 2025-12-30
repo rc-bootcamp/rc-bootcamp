@@ -1,0 +1,69 @@
+[project]
+name = "rc-bootcamp"
+version = "0.1.0"
+description = "A collection of educational materials and code examples for reservoir computing."
+authors = [{ name = "Katsuma Inoue", email = "k-inoue@isi.imi.i.u-tokyo.ac.jp" }]
+requires-python = ">=3.12"
+readme = "README.md"
+dependencies = [
+    "ipykernel>=6.29.5",
+    "ipympl>=0.9.7",
+    "ipywidgets>=8.1.6",
+    "joblib>=1.4.2",
+    "jupyter>=1.1.1",
+    "numpy>=2.2.4",
+    "pandas>=2.2.3",
+    "parse>=1.20.2",
+    "pathos>=0.3.3",
+    "plotly>=6.0.1",
+    "polars>=1.27.0",
+    "requests>=2.32.3",
+    "scikit-learn>=1.6.1",
+    "seaborn>=0.13.2",
+    "tqdm>=4.67.1",
+    "vscode-tqdm>=4.66.2",
+]
+
+[project.optional-dependencies]
+gpu = [
+    "torch>=2.6.0",
+    "torchvision>=0.21.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+preview = true
+ignore = ["B018", "E402", "E501"]
+# "B018": (useless-expression) Found useless expression. Either assign it to a variable or remove it.
+# "E402": (module-import-not-at-top-of-file) Module level import not at top of cell.
+# "E501": (line-too-long) Line too long ({width} > {limit})
+
+select = ["B", "E", "W", "I", "F", "NPY"]
+# Default: ("E4", "E7", "E9", "F")
+# Ref: https://docs.astral.sh/ruff/settings/#lint_select
+# flake8-bugbear (B): https://docs.astral.sh/ruff/rules/#flake8-bugbear-b
+# pycodestyle (E, W): https://docs.astral.sh/ruff/rules/#pycodestyle-e-w
+# isort (I): https://docs.astral.sh/ruff/rules/#isort-i
+# Pyflakes (F): https://docs.astral.sh/ruff/rules/#pyflakes-f
+# numpy (NPY): https://docs.astral.sh/ruff/rules/#numpy-npy
+
+[dependency-groups]
+dev = [
+    "nbconvert>=7.16.6",
+    "nbformat>=5.10.4",
+    "nbqa>=1.9.1",
+    "playwright>=1.56.0",
+    "ruff>=0.14.4",
+]
+
+[tool.uv]
+default-groups = []
