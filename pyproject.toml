@@ -1,6 +1,6 @@
 [project]
 name = "rc-bootcamp"
-version = "0.1.0"
+version = "1.0.0"
 description = "A collection of educational materials and code examples for reservoir computing."
 authors = [{ name = "Katsuma Inoue", email = "k-inoue@isi.imi.i.u-tokyo.ac.jp" }]
 requires-python = ">=3.12"
