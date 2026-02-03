@@ -18,16 +18,16 @@ If accepted, the PR is squashed and merged into `main`, the version is bumped, a
 If you use RC bootcamp in your research or publications, please cite the following paper.
 
 ```bibtex
-@article{inoue2025rcbootcamp,
-  title   = {Reservoir computing bootcamp---from Python/NumPy tutorial for the complete beginners to cutting-edge research topics of reservoir computing},
-  author  = {Inoue, Katsuma and Kubota, Tomoyuki and Tran, Quoc Hoan and Akashi, Nozomi and Terajima, Ryo and Kabayama, Tempei and Guan, JingChuan and Nakajima, Kohei},
-  year    = 2025,
-  month   = XX,
-  journal = {XX},
-  volume  = {XX},
-  number  = {X},
-  pages   = {XXXXXX},
-  issn    = {XXXX-XXXX},
+@article{inoue2026reservoir,
+  title   = {Reservoir Computing Bootcamp---{{From Python}}/{{NumPy}} Tutorial for the Complete Beginners to Cutting-Edge Research Topics of Reservoir Computing},
+  author  = {Inoue, Katsuma and Kubota, Tomoyuki and Hoan Tran, Quoc and Akashi, Nozomi and Terajima, Ryo and Kabayama, Tempei and Guan, JingChuan and Nakajima, Kohei},
+  year    = 2026,
+  month   = feb,
+  journal = {Chaos: An Interdisciplinary Journal of Nonlinear Science},
+  volume  = {36},
+  number  = {2},
+  pages   = {023109},
+  issn    = {1054-1500},
   doi     = {10.1063/5.0283386}
 }
 ```
