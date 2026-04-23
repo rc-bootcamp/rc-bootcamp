@@ -10,32 +10,32 @@ In the long run, we aim to help you master interactive experimentation using Jup
 Below are representative setup and execution methods listed in order of difficulty.
 Please choose your preferred method for setup.
 
-### Method 1. Google Colaboratory + Google Drive (beginner)
+### Method 1: Google Colaboratory (+ Google Drive) (Beginner)
 
 Google Colaboratory is a browser-based Jupyter Notebook frontend suitable for beginners.
-No additional setup is required beyond a Google account, as core packages (e.g., `numpy`, `matplotlib`) are preinstalled.
-Unlike the read-only link on https://rc-bootcamp.github.io/, this method allows you to save notebooks directly on Google Drive for editing and preserving results.
-Note that free-tier resources are limited and sessions time out after periods of inactivity, so we recommend transitioning to a local environment once you become familiar with the basics.
+No additional setup is required beyond a Google account, as essential packages (e.g., `numpy`, `matplotlib`) are preinstalled.
+Additionally, you can save your notebooks to Google Drive to review your code and results later.
+Note that free-tier resources are limited and sessions may time out after periods of inactivity. Therefore, we recommend transitioning to a local environment once you become familiar with the basics.
 
 0. Create or sign in to your Google account.
-1. Download and extract the RC bootcamp materials (zip file).
-2. Upload the entire folder containing this notebook to Google Drive.
-3. Open the notebook file with the `.ipynb` extension.
-4. Start the kernel and run cells with `Shift+Enter`.
-5. In the cell that mounts Drive (`drive.mount("/content/gdrive")`), change `if False:` to `if True:`, and adjust the Google Drive path (e.g., `%cd /content/gdrive/My Drive/...`) if needed.
-6. Run that cell and authenticate when prompted to grant access to your Google Drive.
+1. Visit https://rc-bootcamp.github.io/ and select the chapter you want to learn, then click the Colab icon to launch the notebook.
 
-Step 5 is required to run the notebook on Google Drive; do not skip it.
+To save and sync your progress with Google Drive, follow these steps:
+
+2. Locate the configuration cell, check the `save_to_drive` box (set to `True`), and adjust the `project_path` if you wish to use a specific folder.
+3. Run the cell and follow the on-screen prompts to authorize access. This enables the notebook to save data directly to your Drive.
+4. Once the setup is complete, go to [Google Drive](https://drive.google.com) and find the project folder (e.g., `rc-bootcamp...`). All necessary files and notebooks will be available there.
+5. Open the notebook from your Drive. Remember to set `save_to_drive` to `True` and adjust the `project_path` as needed, then authenticate each time you start a new session to ensure your changes are saved.
 
 ---
 
-### Method 2. uv + VSCode (competent)
+### Method 2: uv + VSCode (Competent)
 
 This method uses the package management tool `uv` to create a virtual environment and run it in VSCode.
 It is recommended for those who want to conduct research and development more seriously.
 Its versatility and robust VSCode extension support make it accessible even for beginners (it's not that difficult once you get used to it).
 
-#### Step 1. Installing uv
+#### Step 1: Installing uv
 
 [`uv`](https://github.com/astral-sh/uv) is a tool for managing Python packages.
 You can install packages on a per-project basis, and it can also be used for distribution by recording package versions (similar to conda, but uv is extremely fast).
@@ -65,7 +65,7 @@ Then, check if it has been installed by executing:
 uv help
 ```
 
-#### Step 2. Configuring VSCode
+#### Step 2: Configuring VSCode
 
 [Visual Studio Code (VSCode)](https://code.visualstudio.com/) is a cross-platform IDE developed by Microsoft.
 Download and run the [installer](https://code.visualstudio.com/download).
@@ -80,7 +80,7 @@ You can install extensions from the `Extensions` tab on the left.
 The minimum recommended packages are listed in `.vscode/extensions.json`.
 When you open the Extensions tab in VSCode, these packages will appear in the recommendations and can be installed with a single click.
 
-#### Step 3. Creating the virtual environment
+#### Step 3: Creating the virtual environment
 
 When you open the folder in VSCode, the folder contents will appear on the left side.
 Press `Ctrl+Shift+@` to open a terminal at the bottom of the screen.
@@ -108,7 +108,7 @@ For Windows, run the following command:
 .venv\Scripts\activate
 ```
 
-#### Step 4. Additional VSCode configuration (Optional)
+#### Step 4: Additional VSCode configuration (Optional)
 
 `Ruff` is a linting tool for Python that automatically formats your code.
 By adding the following settings to `.vscode/settings.json`, the code will be automatically formatted whenever you save a file.
