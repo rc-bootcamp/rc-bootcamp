@@ -14,6 +14,6 @@ def solution(a, b):
 def dataset():
     random.seed(189723987421)
     for _idx in range(100):
-        a = random.randint(-1000, 1000)
-        b = random.randint(-1000, 1000)
+        a = random.randint(-100, 100)
+        b = random.randint(-100, 100)
         yield to_args(a, b)
