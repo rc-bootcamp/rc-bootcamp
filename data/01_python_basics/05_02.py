@@ -10,7 +10,7 @@ def solution(arr_a, arr_b):
     return summation
 
     # Alternative solution.
-    # return sum(zip(arr_a, arr_b), key=lambda v: v[0] * v[1])
+    # return sum(map(lambda v: v[0] * v[1], zip(arr_a, arr_b)))
 
 
 def dataset():
