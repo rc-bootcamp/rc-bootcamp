@@ -10,7 +10,7 @@ def solution(arr):
     return summation
 
     # Alternative solution.
-    # return sum(enumerate(arr), key=lambda v: (v[0] + 1) * v[1])
+    # return sum(map(lambda v: (v[0] + 4) * v[1], enumerate(arr)))
     # END
 
 
