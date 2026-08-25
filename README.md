@@ -12,7 +12,7 @@ The key features of this platform are listed below.
 Use language tags in markdown cells to include multiple languages in the same notebook.
 When building, the `Makefile` extracts only the sections tagged for the chosen language.
 Those pieces are then combined into per-language notebooks, meaning a single source notebook can produce versions for different languages.
-English (`en`) and Japanese (`ja`) are currently supported; you can add other languages by adding tags and translations and updating `LANGUAGES` in the `Makefile`.
+English (`en`), Japanese (`ja`) and Chinese (`zh` - contributed via [#4](https://github.com/rc-bootcamp/rc-bootcamp/pull/4)) are currently supported; you can add other languages by adding tags and translations and updating `LANGUAGES` in the `Makefile`.
 
 2. **Automatic fill-in-the-blank exercise generation**:
 Add special markers in code cells and the build will replace those parts with placeholders (`...`) to create exercises.
@@ -65,20 +65,22 @@ uv run make
 ```
 
 A successful build creates `product/rc-bootcamp_[LANG][MODE_SUFFIX]/` directories for each language and mode.
-By default, the build creates four product folders:
+By default, the build creates six product folders:
 - `product/rc-bootcamp_en`: English exercise version.
 - `product/rc-bootcamp_en_sol`: English solution version.
 - `product/rc-bootcamp_ja`: Japanese exercise version.
 - `product/rc-bootcamp_ja_sol`: Japanese solution version.
+- `product/rc-bootcamp_zh`: Chinese exercise version.
+- `product/rc-bootcamp_zh_sol`: Chinese solution version.
 
 ## Editing notebooks
 This section provides guidelines for editing notebooks (`.ipynb` files).
 All notebooks are under `src/`.
 
 ### Markdown cells
-Use language tags such as `[en]: #` and `[ja]: #` to include multiple languages in the same markdown cell.
+Use language tags such as `[en]: #`, `[ja]: #`, and `[zh]: #` to include multiple languages in the same markdown cell.
 Use `[END]: #` to end language-specific sections for shared content (e.g., math or figures).
-The example below shows a markdown cell with English and Japanese sections, plus shared math.
+The example below shows a markdown cell with English, Japanese, and Chinese sections, plus shared math.
 
 ```markdown
 [en]: #
@@ -86,6 +88,9 @@ Hello, this is an English sentence.
 
 [ja]: #
 こんにちは、これは日本語の文章です。
+
+[zh]: #
+你好，这是一句中文句子。
 
 [END]: #
 $$
@@ -97,6 +102,9 @@ where $a$, $b$, and $c$ are variables.
 
 [ja]: #
 ここで$a$、$b$、$c$は変数です。
+
+[zh]: #
+这里的$a$、$b$、$c$是变量。
 ```
 
 During build, the English version (`en`) will include only the `[en]: #` sections and the shared content, while the blocks for other languages are omitted.
@@ -123,9 +131,20 @@ $$
 ここで$a$、$b$、$c$は変数です。
 ```
 
+The Chinese version (`zh`) will be:
+```markdown
+你好，这是一句中文句子。
+
+$$
+a + b = c
+$$
+
+这里的$a$、$b$、$c$是变量。
+```
+
 To add another language, add its tag and content in the same way.
 The new language tag should be added to `LANGUAGES` in `Makefile`.
-Use language tags following [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) (e.g., `es` for Spanish, `zh` for Chinese).
+Use language tags following [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) (e.g., `es` for Spanish, `de` for German).
 
 #### Images
 Put images in `assets/` and link them from notebooks in `src/` using a relative path like `../assets/example_image.webp`.
@@ -194,6 +213,9 @@ Figure 1: An example caption.
 
 [ja]: #
 図1: キャプションの例。
+
+[zh]: #
+图1: 图例示例。
 
 [END]: #
 
@@ -402,7 +424,7 @@ The `make deploy` command builds the project using the steps below.
 5. Convert selected notebooks (README.ipynb by default) to markdown (`.md`) and PDF (`.pdf`).
 6. Copy built notebooks, converted files, and required root settings and libraries into `product/rc-bootcamp_[LANG][MODE_SUFFIX]/`.
 
-`make deploy` builds all languages in `LANGUAGES` (default: `en ja`) and modes in `MODES` (default: `ex sol`), producing four output folders.
+`make deploy` builds all languages in `LANGUAGES` (default: `en ja zh`) and modes in `MODES` (default: `ex sol`), producing six output folders.
 To build a single language or mode, run `make [LANG]` or `make [LANG]_[MODE]` (e.g., `make en` or `make ja_ex`).
 
 You can include or exclude targets with `[LANG]_include` and `[LANG]_exclude` variables, which accept space-separated glob patterns for notebook filenames (without extensions).
@@ -512,9 +534,12 @@ en
 en-dist
 en_ex
 en_ex-dist
+en_ex-mark
 en_ex-test
+en-mark
 en_sol
 en_sol-dist
+en_sol-mark
 en_sol-test
 en-test
 help
@@ -522,13 +547,29 @@ ja
 ja-dist
 ja_ex
 ja_ex-dist
+ja_ex-mark
 ja_ex-test
+ja-mark
 ja_sol
 ja_sol-dist
+ja_sol-mark
 ja_sol-test
 ja-test
+mark
 test
-test-src
+test-init
+zh
+zh-dist
+zh_ex
+zh_ex-dist
+zh_ex-mark
+zh_ex-test
+zh-mark
+zh_sol
+zh_sol-dist
+zh_sol-mark
+zh_sol-test
+zh-test
 ```
 
 ## License

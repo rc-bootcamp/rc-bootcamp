@@ -5,7 +5,7 @@ BUILD_NAME := build
 PRODUCT_NAME := product
 
 # Supported languages (see https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes)
-LANGUAGES := en ja
+LANGUAGES := en ja zh
 
 # Supported modes (ex: exercise mode, sol: solution mode)
 MODES := ex sol
